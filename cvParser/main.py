@@ -12,12 +12,11 @@ import nltk
 import os
 import json
 import urllib
-from workfile import data
 import re
 import sys
 
 from nltk.tag.stanford import NERTagger
-java_path = "C:\Program Files\Java\jre1.8.0_45\\bin\java.exe"
+java_path = "C:\Program Files\Java\jre1.8.0_45\\bin\java.exe" ### Java path may need to be changed, note jre.8 is required for the stanford tagger
 os.environ['JAVAHOME'] = java_path
 ### For future the string used to find the tagger should be custom on setup
 st = NERTagger('C:/Users/Mungo/Desktop/Python/Projects/cvParser/cvParser/stanford-ner-2014-10-26/classifiers/english.all.3class.distsim.crf.ser.gz', 'C:/Users/Mungo/Desktop/Python/Projects/cvParser/cvParser/stanford-ner-2014-10-26/stanford-ner.jar')

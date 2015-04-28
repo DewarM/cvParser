@@ -1,3 +1,4 @@
+
 ######################
 ######################
 
@@ -11,6 +12,6 @@ from filefinder import FileFinder
 from my_parser import MyParser
 
 files = FileFinder()
-list_of_files = files.get_files()
-parsed_files = MyParser(list_of_files)
-parsed_files.get_results()
+list_of_files, flag = files.get_files()
+parsed_files = MyParser(list_of_files, flag)
+parsed_files.write_json_file()

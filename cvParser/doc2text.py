@@ -16,9 +16,7 @@ TEXT = WORD_NAMESPACE + 't'
  
  
 def get_docx_text(path):
-	"""
-	Take the path of a docx file as argument, return the text in unicode.
-	"""
+	"""	Take the path of a docx file as argument, return the text in unicode."""
 	document = zipfile.ZipFile(path)
 	xml_content = document.read('word/document.xml')
 	document.close()

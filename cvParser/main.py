@@ -1,7 +1,4 @@
 
-######################
-######################
-
 ### To Add:
 ### - Telephone number search
 ### - import pdf

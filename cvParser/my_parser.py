@@ -6,10 +6,28 @@ from nltk.tokenize import regexp_tokenize
 from doc2text import get_docx_text    
 import json
 
-java_path = "C:\Program Files\Java\jre1.8.0_45\\bin\java.exe" ### Java path may need to be changed, note jre.8 is required for the stanford tagger
+##################################################################
+##																##
+## 							SETUP 								##
+## 																##
+##################################################################
+
+# Should point to java.exe, requires jre1.8
+java_path = "C:\Program Files\Java\jre1.8.0_45\\bin\java.exe" 
+
+# Should point to english.all.3class.distsim.crf.ser.gz and stanford-ner.jar
+st = NERTagger(
+				'C:/Users/Mungo/Desktop/Python/Projects/cvParser/cvParser/stanford-ner-2014-10-26/classifiers/english.all.3class.distsim.crf.ser.gz', 
+				'C:/Users/Mungo/Desktop/Python/Projects/cvParser/cvParser/stanford-ner-2014-10-26/stanford-ner.jar'
+				)
+
+##################################################################
+##																##
+## 							CODE 								##
+## 																##
+##################################################################
+
 os.environ['JAVAHOME'] = java_path
-### For future the string used to find the tagger should be custom on setup
-st = NERTagger('C:/Users/Mungo/Desktop/Python/Projects/cvParser/cvParser/stanford-ner-2014-10-26/classifiers/english.all.3class.distsim.crf.ser.gz', 'C:/Users/Mungo/Desktop/Python/Projects/cvParser/cvParser/stanford-ner-2014-10-26/stanford-ner.jar')
 
 class MyParser():
 	'''A simple .docx CV parser'''
@@ -21,8 +39,6 @@ class MyParser():
 		self.file_list = file_list
 		self.flag = flag
 
-		
-	
 	def tag_and_tokenize(self,file):
 		'''Tokenize, Chuncks and tags string 's' the bulk of the script work (time) is done here'''
 		self.text = get_docx_text(file)
@@ -91,13 +107,13 @@ class MyParser():
 			print("Please close all open documents in the working directory before continuing...")
 
 	def write_json_file(self):
-
 		output_name = input("Output filename (only .txt supported)>:  ")
 
 		if output_name[-4:] != '.txt':
 			output_name += '.txt'
 
-		with open(output_name, 'w') as wipe: # Line wipes any contents inside output_name.txt
+		# Line wipes any contents inside output_name.txt
+		with open(output_name, 'w') as wipe: 
 				wipe.closed
 
 		for f in self.file_list:

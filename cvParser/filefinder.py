@@ -10,7 +10,8 @@ class FileFinder():
 	def get_files(self):
 		'''console commands are dealt with here''' ### functionality to check if the user has added a .docx ending here should probably be made
 		if len(sys.argv) < 2:
-			print('need sys.argv command')
+			print('need sys.argv command, use -a to analyse ')
+			sys.exit(0)
 			
 		elif sys.argv[1] == '-a':
 			print('All files in the working directory will be analysed...please wait...')
